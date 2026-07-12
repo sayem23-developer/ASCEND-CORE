@@ -1,0 +1,148 @@
+const {
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+} = require("discord.js");
+
+const { createEmbed } = require("../config/embeds");
+
+module.exports = {
+  name: "interactionCreate",
+
+  async execute(interaction, client) {
+
+    // Slash Commands
+    if (interaction.isChatInputCommand()) {
+      const command = client.commands.get(interaction.commandName);
+
+      if (!command) return;
+
+      try {
+        await command.execute(interaction, client);
+      } catch (error) {
+        console.error(error);
+
+        if (!interaction.replied && !interaction.deferred) {
+          await interaction.reply({
+            content: "❌ An error occurred while executing this command.",
+            flags: 64,
+          });
+        }
+      }
+
+      return;
+    }
+
+    // Buttons
+    if (interaction.isButton()) {
+
+      switch (interaction.customId) {
+
+        case "setup_verify": {
+          const embed = createEmbed(
+            "🛡️ Verification Setup",
+            "Configure the verification system.\n\nChoose an option below."
+          );
+
+          const row = new ActionRowBuilder().addComponents(
+            new ButtonBuilder()
+              .setCustomId("verify_channel")
+              .setLabel("Set Channel")
+              .setEmoji("📢")
+              .setStyle(ButtonStyle.Primary),
+
+            new ButtonBuilder()
+              .setCustomId("verify_role")
+              .setLabel("Set Role")
+              .setEmoji("🎭")
+              .setStyle(ButtonStyle.Success),
+
+            new ButtonBuilder()
+              .setCustomId("verify_send")
+              .setLabel("Send Panel")
+              .setEmoji("✅")
+              .setStyle(ButtonStyle.Secondary),
+
+            new ButtonBuilder()
+              .setCustomId("verify_back")
+              .setLabel("Back")
+              .setEmoji("⬅️")
+              .setStyle(ButtonStyle.Danger)
+          );
+
+          return interaction.reply({
+            embeds: [embed],
+            components: [row],
+            flags: 64,
+          });
+        }
+
+        case "setup_ticket":
+          return interaction.reply({
+            embeds: [
+              createEmbed(
+                "🎫 Ticket System",
+                "Coming in ASCEND CORE v3."
+              ),
+            ],
+            flags: 64,
+          });
+
+        case "setup_welcome":
+          return interaction.reply({
+            embeds: [
+              createEmbed(
+                "👋 Welcome System",
+                "Coming in ASCEND CORE v3."
+              ),
+            ],
+            flags: 64,
+          });
+
+        case "setup_logs":
+          return interaction.reply({
+            embeds: [
+              createEmbed(
+                "📜 Logs System",
+                "Coming in ASCEND CORE v3."
+              ),
+            ],
+            flags: 64,
+          });
+
+        case "setup_autorole":
+          return interaction.reply({
+            embeds: [
+              createEmbed(
+                "🎭 Auto Role",
+                "Coming in ASCEND CORE v3."
+              ),
+            ],
+            flags: 64,
+          });
+
+        case "setup_settings":
+          return interaction.reply({
+            embeds: [
+              createEmbed(
+                "⚙️ Settings",
+                "Coming in ASCEND CORE v3."
+              ),
+            ],
+            flags: 64,
+          });
+
+        case "verify_channel":
+        case "verify_role":
+        case "verify_send":
+        case "verify_back":
+          return interaction.reply({
+            content: "🚧 This feature will be added in the next step.",
+            flags: 64,
+          });
+
+      }
+    }
+
+  },
+};
