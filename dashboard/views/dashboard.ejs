@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ASCEND CORE Dashboard</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+}
+
+.header {
+    padding: 20px;
+    background: #111827;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #facc15;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logout {
+    color: white;
+    text-decoration: none;
+    background: #5865F2;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.container {
+    padding: 30px;
+}
+
+.card {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    color: #facc15;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.box {
+    background: #334155;
+    padding: 20px;
+    border-radius: 12px;
+    min-width: 150px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<div class="logo">
+⚡ ASCEND CORE v3
+</div>
+
+<a class="logout" href="/logout">
+Logout
+</a>
+
+</div>
+
+
+<div class="container">
+
+<div class="card">
+
+<h2>
+Welcome <%= user.username %>
+</h2>
+
+<p>
+Dashboard is online.
+</p>
+
+</div>
+
+
+<div class="stats">
+
+<div class="box">
+🤖 Bot<br>
+Online
+</div>
+
+
+<div class="box">
+🌐 Servers<br>
+<%= client.guilds.cache.size %>
+</div>
+
+
+<div class="box">
+👥 Users<br>
+<%= client.users.cache.size %>
+</div>
+
+</div>
+
+
+</div>
+
+
+</body>
+</html>

@@ -24,8 +24,7 @@ passport.use(new DiscordStrategy({
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: process.env.REDIRECT_URI,
     scope: ["identify"]
-},
-(accessToken, refreshToken, profile, done) => {
+}, (accessToken, refreshToken, profile, done) => {
     return done(null, profile);
 }));
 
@@ -45,7 +44,9 @@ app.get("/auth/discord/callback",
         failureRedirect: "/"
     }),
     (req, res) => {
-        res.send(`Welcome ${req.user.username}`);
+        res.render("dashboard", {
+            user: req.user
+        });
     }
 );
 
