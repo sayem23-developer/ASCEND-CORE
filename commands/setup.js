@@ -11,7 +11,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("setup")
     .setDescription("Open the ASCEND CORE setup panel.")
-    .setDefaultMemberPermissions(0x00000008), // Administrator
+    .setDefaultMemberPermissions(0x00000008),
 
   async execute(interaction) {
     const embed = createEmbed(
@@ -34,7 +34,7 @@ module.exports = {
 
       new ButtonBuilder()
         .setCustomId("setup_welcome")
-        .setLabel("Welcome")
+        .setLabel("Welcome & Goodbye")
         .setEmoji("👋")
         .setStyle(ButtonStyle.Success)
     );
