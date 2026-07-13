@@ -1,42 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>ASCEND CORE Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASCEND CORE v3</title>
 
-    <style>
-        body {
-            background: #0f172a;
-            color: white;
-            font-family: Arial;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
 
-        .card {
-            background: #1e293b;
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            width: 320px;
-        }
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#0f172a;
+color:#fff;
+}
 
-        button {
-            background: #5865F2;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+.card{
+width:380px;
+padding:40px;
+border-radius:20px;
+background:#1e293b;
+text-align:center;
+box-shadow:0 0 30px rgba(0,0,0,.4);
+}
 
-        a {
-            text-decoration: none;
-        }
-    </style>
+.logo{
+font-size:30px;
+font-weight:bold;
+color:#facc15;
+margin-bottom:10px;
+}
+
+.version{
+color:#94a3b8;
+margin-bottom:30px;
+}
+
+.login-btn{
+display:block;
+width:100%;
+padding:15px;
+border-radius:12px;
+background:#5865F2;
+color:#fff;
+text-decoration:none;
+font-size:18px;
+font-weight:bold;
+transition:.3s;
+}
+
+.login-btn:hover{
+background:#4752c4;
+}
+
+.footer{
+margin-top:20px;
+font-size:13px;
+color:#94a3b8;
+}
+</style>
 
 </head>
 
@@ -44,15 +73,21 @@
 
 <div class="card">
 
-    <h1>ASCEND CORE</h1>
+<div class="logo">
+ASCEND CORE
+</div>
 
-    <p>Professional Discord Dashboard</p>
+<div class="version">
+v3 Dashboard
+</div>
 
-    <a href="/auth/discord">
-        <button>
-            Login with Discord
-        </button>
-    </a>
+<a class="login-btn" href="/auth/discord">
+Login with Discord
+</a>
+
+<div class="footer">
+Powered by ASCEND CORE
+</div>
 
 </div>
 
