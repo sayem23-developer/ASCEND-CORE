@@ -27,6 +27,9 @@ require("./handlers/eventHandler")(client);
 
 // Express Dashboard
 const app = express();
+const os = require("os");
+
+const startTime = Date.now();
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/dashboard/views");
@@ -69,9 +72,13 @@ passport.deserializeUser((user, done) => {
 app.get("/", (req, res) => {
   if (req.isAuthenticated()) {
     return res.render("dashboard", {
-      user: req.user,
-      client: client
-    });
+  user: req.user,
+  client: client,
+  uptime: Date.now() - startTime,
+  cpu: os.loadavg()[0],
+  ram: ((1 - os.freemem() / os.totalmem()) * 100).toFixed(2)
+});
+
   }
 res.render("login");
 });
