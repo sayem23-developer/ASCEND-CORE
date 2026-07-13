@@ -105,6 +105,16 @@ app.get("/setup", (req, res) => {
 });
 
  
+app.get("/welcome", (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect("/");
+  }
+
+  res.render("welcome", {
+    user: req.user,
+    client: client
+  });
+});
 
 
 // Login
