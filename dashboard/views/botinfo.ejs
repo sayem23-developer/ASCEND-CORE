@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ASCEND CORE - Bot Info</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#0b1120;
+    color:white;
+    padding:30px;
+}
+
+.card{
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+    max-width:500px;
+}
+
+h1{
+    color:#facc15;
+}
+
+.info{
+    margin-top:15px;
+    line-height:2;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🤖 ASCEND CORE Bot Info</h1>
+
+<div class="info">
+
+<b>Bot Name:</b>
+<%= client.user.username %>
+<br>
+
+<b>ID:</b>
+<%= client.user.id %>
+<br>
+
+<b>Servers:</b>
+<%= client.guilds.cache.size %>
+<br>
+
+<b>Users:</b>
+<%= client.users.cache.size %>
+<br>
+
+<b>Status:</b>
+Online ✅
+<br>
+
+<b>Library:</b>
+Discord.js v14
+
+</div>
+
+</div>
+
+</body>
+</html>

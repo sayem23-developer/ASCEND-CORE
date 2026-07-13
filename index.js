@@ -73,9 +73,31 @@ app.get("/", (req, res) => {
       client: client
     });
   }
-
-  res.render("login");
+res.render("login");
 });
+
+app.get("/botinfo", (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect("/");
+  }
+
+  res.render("botinfo", {
+    user: req.user,
+    client: client
+  });
+});
+app.get("/setup", (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect("/");
+  }
+
+  res.render("setup", {
+    user: req.user,
+    client: client
+  });
+});
+
+ 
 
 
 // Login
